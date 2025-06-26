@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta name="description"
+        content="Welcome to ACIDEMIA, the ultimate destination for DOOMED and STONED music and art. Explore our latest releases, tour dates, and gallery of mind-bending visuals.">
+    <meta name="keywords"
+        content="ACIDEMIA, psychedelic music, art, gallery, tour, latest releases, cosmic horror, interdimensional tour">
+    <meta name="author" content="ACIDEMIA Team">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="images/logo.png" type="images/logo.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACIDEMIA | Home</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'acid-green': '#39ff14',
+                        'acid-purple': '#9400d3',
+                        'acid-blue': '#00f0ff',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 20s linear infinite',
+                        'portal-in': 'portalIn 1.5s ease-out forwards',
+                        'portal-out': 'portalOut 1.5s ease-in forwards',
+                    },
+                    keyframes: {
+                        portalIn: {
+                            '0%': { transform: 'scale(0.1) rotate(0deg)', opacity: '0' },
+                            '100%': { transform: 'scale(1) rotate(360deg)', opacity: '1' },
+                        },
+                        portalOut: {
+                            '0%': { transform: 'scale(1) rotate(0deg)', opacity: '1' },
+                            '100%': { transform: 'scale(10) rotate(360deg)', opacity: '0' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/css">
+        /* Custom styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #39ff14;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+
+        @keyframes portalIn {
+            0% {
+                transform: scale(0.1) rotate(0deg);
+                opacity: 0;
+                border-radius: 100%;
+                background: radial-gradient(circle, #39ff14 0%, #000 100%);
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+                border-radius: 0;
+                background: #000;
+            }
+        }
+
+        @keyframes portalOut {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+                background: #000;
+            }
+
+            100% {
+                transform: scale(10) rotate(360deg);
+                opacity: 0;
+                border-radius: 100%;
+                background: radial-gradient(circle, #9400d3 0%, #000 100%);
+            }
+        }
+
+        /* Importing Orbitron font */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap');
+
+
+        @font-face {
+            font-family: 'Rusuck';
+            src: url('fonts/Rusuck.woff') format('woff');
+            font-weight: thin;
+            font-style: thin;
+        }
+
+        @font-face {
+            font-family: 'CsChimera';
+            src: url('fonts/CSChimera-ReverseItalic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'monda';
+            src: url('fonts/Monda.woff') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'histeriss';
+            src: url('fonts/Histeriss.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'nordiks';
+            src: url('fonts/NORDIKS.ttf') format('tff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'monda', 'nordiks','histeriss','monda', 'Rusuck', 'Cschimera', sans-serif;
+        }
+
+        /* Esconde o hamburguer quando o menu mobile está aberto */
+        .menu-open #mobile-menu-button {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[url('images/01.jpg')] bg-cover bg-center bg-no-repeat text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+        <div class="w-32 h-32 border-4 border-acid-green rounded-full animate-spin-slow border-t-transparent mb-4">
+        </div>
+        <p class="text-acid-green text-xl font-bold">ENTERING ACIDEMIA DIMENSION...</p>
+    </div>
+
+    <!-- 3D Logo -->
+    <div id="logo-container" class="fixed bottom-4 right-4 w-24 h-24 z-[2000]">
+        <!-- This will be populated by three.js -->
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" class="min-h-screen flex flex-col opacity-0">
+        <!-- Navigation -->
+        <!-- Navigation Desktop -->
+        <nav id="main-nav" class="py-5 px-4 md:px-10 items-center fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md transition-all duration-500 opacity-100 hidden md:flex">
+            <div class="flex items-center space-x-8 w-full" style="font-family: histeriss;">
+                <img src="images/logo.png" alt="Logo ACIDEMIA" class="h-20 md:h-30 w-auto" />
+                <div class="md:flex space-x-20 flex-1" style="font-family: histeriss;">
+                    <a href="index.html" class="ml-20 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-acid-green hover:text-acid-blue transition-colors">HOME</a>
+                    <a href="tour.html" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl nav-link text-acid-green hover:text-acid-blue transition-colors">TOUR</a>
+                    <a href="gallery.html" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl nav-link text-acid-green hover:text-acid-blue transition-colors">GALLERY</a>
+                    <a href="about.html" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl nav-link text-acid-green hover:text-acid-blue transition-colors">ABOUT</a>
+                </div>
+                <div class="flex items-center space-x-4 ml-4">
+                    <a href="https://www.instagram.com/acidemiaoficial/" target="_blank" aria-label="Instagram" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="5" stroke="currentColor"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor"/>
+                            <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@acidemia2392" target="_blank" aria-label="YouTube" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21.8 8.001a2.75 2.75 0 0 0-1.93-1.94C18.2 6 12 6 12 6s-6.2 0-7.87.06A2.75 2.75 0 0 0 2.2 8.001 28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.93 1.94C5.8 18 12 18 12 18s6.2 0 7.87-.06a2.75 2.75 0 0 0 1.93-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l6 3-6 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://acidemiaoficial.bandcamp.com/" target="_blank" aria-label="Bandcamp" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 32 32">
+                            <polygon points="2,28 30,28 12,4 2,4" />
+                        </svg>
+                    </a>
+                    <a href="mailto:acidemiaoficial@gmail.com" aria-label="Email" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="16" x="2" y="4" rx="3" stroke="currentColor"/>
+                            <path d="M3 6l9 7 9-7" stroke="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hamburger only on mobile (fora do nav!) -->
+        <button id="mobile-menu-button" class="fixed top-6 right-6 md:hidden text-acid-green z-[1000]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden fixed inset-0 z-[999] flex-col items-center justify-center space-y-4 md:hidden px-2
+            bg-black/90 backdrop-blur-sm
+            opacity-0 pointer-events-none transition-all duration-500 transform scale-95" style="font-family: histeriss;">
+            <a href="index.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">HOME</a>
+            <a href="tour.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">TOUR</a>
+            <a href="gallery.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">GALLERY</a>
+            <a href="about.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">ABOUT</a>
+            <!-- Social links abaixo das opções -->
+            <div class="flex items-center justify-center space-x-6 mt-8">
+                <a href="https://www.instagram.com/acidemiaoficial/" target="_blank" aria-label="Instagram" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect width="18" height="18" x="3" y="3" rx="5" stroke="currentColor"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor"/>
+                        <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@acidemia2392" target="_blank" aria-label="YouTube" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.8 8.001a2.75 2.75 0 0 0-1.93-1.94C18.2 6 12 6 12 6s-6.2 0-7.87.06A2.75 2.75 0 0 0 2.2 8.001 28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.93 1.94C5.8 18 12 18 12 18s6.2 0 7.87-.06a2.75 2.75 0 0 0 1.93-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l6 3-6 3z"/>
+                    </svg>
+                </a>
+                <a href="https://acidemiaoficial.bandcamp.com/" target="_blank" aria-label="Bandcamp" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 32 32">
+                        <polygon points="2,28 30,28 12,4 2,4" />
+                    </svg>
+                </a>
+                <a href="mailto:acidemiaoficial@gmail.com" aria-label="Email" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect width="20" height="16" x="2" y="4" rx="3" stroke="currentColor"/>
+                        <path d="M3 6l9 7 9-7" stroke="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-acid-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Header Mobile (apenas mobile) -->
+        <div id="mobile-header" class="flex items-center justify-between px-4 py-5 fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md md:hidden transition-transform duration-500">
+            <img src="images/logo.png" alt="Logo ACIDEMIA" class="h-14 w-auto" />
+        </div>
+
+        <!-- Espaço para o header fixo -->
+        <div class="h-24"></div>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex flex-col items-center justify-center px-4 py-8 md:py-16">
+            <div class="max-w-4xl w-full">
+                <!-- Spotify Player -->
+                <div class="mb-12">
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/artist/6n1Utzi9MLuSJ6ovligUJY?utm_source=generator"
+                        width="100%" height="152" frameBorder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+                <!-- Carrossel horizontal tela cheia, maior e com facas nas setas -->
+                <div class="w-full flex flex-col items-center my-12">
+                    <h2 class="text-2xl md:text-3xl font-bold text-acid-blue mb-6"></h2>
+                    <div class="relative w-full max-w-6xl mx-auto flex items-center justify-center">
+                        <button id="prev-coffin"
+                            class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-6 bg-transparent hover:scale-125 transition-transform">
+                        </button>
+                        <div id="coffin-image"
+                            class="w-full h-[36rem] flex items-center justify-center overflow-hidden rounded-2xl border-8 border-acid-green bg-gray-900">
+                            <img src="img/1.jpg" alt="Imagem Carrossel"
+                                class="object-cover w-full h-full transition-all duration-500" />
+                        </div>
+                        <button id="next-coffin"
+                            class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-6 bg-transparent hover:scale-125 transition-transform">
+                        </button>
+                    </div>
+                </div>
+                <!-- Latest News -->
+                <section class="mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold text-acid-blue mb-6">LATEST RELEASE</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="bg-gray-900/50 p-6 rounded-lg border border-acid-purple/30 hover:border-acid-green transition-all">
+                            <h3 class="text-xl font-bold text-acid-green mb-2">COSMIC HORROR</h3>
+                            <p class="text-gray-300 mb-4">Our latest album exploring the depths of cosmic terror and
+                                psychedelic soundscapes.</p>
+                            <button
+                                class="bg-acid-purple hover:bg-acid-blue text-white px-4 py-2 rounded transition-colors">LISTEN
+                                NOW</button>
+                        </div>
+                        <div
+                            class="bg-gray-900/50 p-6 rounded-lg border border-acid-purple/30 hover:border-acid-green transition-all">
+                            <h3 class="text-xl font-bold text-acid-green mb-2">UPCOMING TOUR</h3>
+                            <p class="text-gray-300 mb-4">Prepare for our interdimensional tour across major cities and
+                                alternate realities.</p>
+                            <a href="tour.html"
+                                class="inline-block bg-acid-purple hover:bg-acid-blue text-white px-4 py-2 rounded transition-colors">TOUR
+                                DATES</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Video -->
+                <section class="mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold text-acid-blue mb-6">LATEST VIDEO</h2>
+                    <div
+                        class="aspect-w-16 aspect-h-9 bg-gray-900/50 rounded-lg overflow-hidden border border-acid-purple/30 flex items-center justify-center">
+                        <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/hLqF4zMxFRU"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="py-6 px-4 md:px-8 border-t border-gray-800">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 ACIDEMIA. ALL RIGHTS RESERVED.</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/acidemiaoficial/" class="text-gray-400 hover:text-acid-green transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@acidemia2392" class="text-gray-400 hover:text-acid-green transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Portal Effect -->
+    <div id="portal" class="fixed inset-0 bg-black z-40 pointer-events-none opacity-0"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/logo3d.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
