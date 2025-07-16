@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta name="description"
+        content="Welcome to ACIDEMIA, the ultimate destination for DOOMED and STONED music and art. Explore our latest releases, tour dates, and gallery of mind-bending visuals.">
+    <meta name="keywords"
+        content="ACIDEMIA, psychedelic music, art, gallery, tour, latest releases, cosmic horror, interdimensional tour">
+    <meta name="author" content="ACIDEMIA Team">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="shortcut icon" href="images/Morcegomia2.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACIDEMIA | Discography</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'acid-green': '#39ff14',
+                        'acid-purple': '#9400d3',
+                        'acid-blue': '#00f0ff',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 20s linear infinite',
+                        'portal-in': 'portalIn 1.5s ease-out forwards',
+                        'portal-out': 'portalOut 1.5s ease-in forwards',
+                    },
+                    keyframes: {
+                        portalIn: {
+                            '0%': { transform: 'scale(0.1) rotate(0deg)', opacity: '0' },
+                            '100%': { transform: 'scale(1) rotate(360deg)', opacity: '1' },
+                        },
+                        portalOut: {
+                            '0%': { transform: 'scale(1) rotate(0deg)', opacity: '1' },
+                            '100%': { transform: 'scale(10) rotate(360deg)', opacity: '0' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/css">
+        /* Custom styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #39ff14;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+
+        @keyframes portalIn {
+            0% {
+                transform: scale(0.1) rotate(0deg);
+                opacity: 0;
+                border-radius: 100%;
+                background: radial-gradient(circle, #39ff14 0%, #000 100%);
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+                border-radius: 0;
+                background: #000;
+            }
+        }
+
+        @keyframes portalOut {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+                background: #000;
+            }
+
+            100% {
+                transform: scale(10) rotate(360deg);
+                opacity: 0;
+                border-radius: 100%;
+                background: radial-gradient(circle, #9400d3 0%, #000 100%);
+            }
+        }
+
+        /* Importing Orbitron font */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap');
+
+
+        @font-face {
+            font-family: 'Rusuck';
+            src: url('fonts/Rusuck.woff') format('woff');
+            font-weight: thin;
+            font-style: thin;
+        }
+
+        @font-face {
+            font-family: 'CsChimera';
+            src: url('fonts/CSChimera-ReverseItalic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'monda';
+            src: url('fonts/Monda.woff') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'histeriss';
+            src: url('fonts/Histeriss.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'nordiks';
+            src: url('fonts/NORDIKS.ttf') format('tff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'monda', 'nordiks','histeriss','monda', 'Rusuck', 'Cschimera', sans-serif;
+        }
+
+        #lyrics-content {
+        font-family: 'monda', monospace;
+        line-height: 1.6;
+        }
+
+        /* Esconde o hamburguer quando o menu mobile está aberto */
+        .menu-open #mobile-menu-button {
+            display: none;
+        }
+
+        #lyrics-modal .bg-\[\#181818\] {
+            width: 100%;
+            max-width: 95vw;
+            box-sizing: border-box;
+        }
+        #lyrics-content {
+            font-family: 'monda', monospace;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 0 auto;
+            padding: 0;
+            background: none;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 640px) {
+            #lyrics-modal .bg-\[\#181818\] {
+                padding: 1rem !important;
+                max-width: 98vw;
+            }
+            #lyrics-content {
+                font-size: 0.85rem;
+            }
+        }
+
+        #lyrics-modal .bg-\[\#181818\],
+        #lyrics-modal #lyrics-modal-box {
+            width: auto !important;
+            min-width: 220px;
+            max-width: 98vw;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #lyrics-content {
+            font-family: 'monda', monospace;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 0 auto;
+            padding: 0;
+            background: none;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 640px) {
+            #lyrics-modal .bg-\[\#181818\],
+            #lyrics-modal #lyrics-modal-box {
+                padding: 1rem !important;
+                max-width: 98vw;
+            }
+            #lyrics-content {
+                font-size: 0.85rem;
+            }
+        }
+
+        #lyrics-modal #lyrics-modal-box {
+            width: 420px !important;
+            max-width: 98vw;
+            min-width: 220px;
+            max-height: 80vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        #lyrics-content {
+            font-family: 'monda', monospace;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: 100%;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0;
+            background: none;
+            border: none;
+            display: block;
+            max-height: 60vh;
+        }
+        @media (max-width: 640px) {
+            #lyrics-modal #lyrics-modal-box {
+                width: 98vw !important;
+                min-width: 0;
+                max-width: 98vw;
+                padding: 1rem !important;
+            }
+            #lyrics-content {
+                font-size: 0.85rem;
+                max-height: 50vh;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[url('images/01.jpg')] bg-cover bg-center bg-no-repeat text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+        <div class="w-32 h-32 border-4 border-acid-green rounded-full animate-spin-slow border-t-transparent mb-4">
+        </div>
+        <p class="text-acid-green text-xl font-bold">ENTERING ACIDEMIA DIMENSION...</p>
+    </div>
+
+    <!-- 3D Logo -->
+    <div id="logo-container" class="fixed bottom-4 right-4 w-24 h-24 z-[2000]">
+        <!-- This will be populated by three.js -->
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" class="min-h-screen flex flex-col opacity-0">
+        <!-- Navigation -->
+        <!-- Navigation Desktop -->
+        <nav id="main-nav" class="py-5 px-4 md:px-10 items-center fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md transition-all duration-500 opacity-100 hidden md:flex">
+            <div class="flex items-center space-x-8 w-full" style="font-family: histeriss;">
+                <img src="images/logo.png" alt="Logo ACIDEMIA" class="h-20 md:h-30 w-auto" />
+                <div class="md:flex space-x-20 flex-1" style="font-family: histeriss;">
+                    <a href="index.html" class="ml-20 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-acid-green hover:text-acid-blue transition-colors">HOME</a>
+                    <a href="discography.html" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl nav-link text-acid-green hover:text-acid-blue transition-colors">DISCOGRAPHY</a>
+                    <a href="gallery.html" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl nav-link text-acid-green hover:text-acid-blue transition-colors">GALLERY</a>
+                    <a href="about.html" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl nav-link text-acid-green hover:text-acid-blue transition-colors">ABOUT</a>
+                </div>
+                <div class="flex items-center space-x-4 ml-4">
+                    <a href="https://www.instagram.com/acidemiaoficial/" target="_blank" aria-label="Instagram" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="5" stroke="currentColor"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor"/>
+                            <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@acidemia2392" target="_blank" aria-label="YouTube" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21.8 8.001a2.75 2.75 0 0 0-1.93-1.94C18.2 6 12 6 12 6s-6.2 0-7.87.06A2.75 2.75 0 0 0 2.2 8.001 28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.93 1.94C5.8 18 12 18 12 18s6.2 0 7.87-.06a2.75 2.75 0 0 0 1.93-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l6 3-6 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://acidemiaoficial.bandcamp.com/" target="_blank" aria-label="Bandcamp" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 32 32">
+                            <polygon points="2,28 30,28 12,4 2,4" />
+                        </svg>
+                    </a>
+                    <a href="mailto:acidemiaoficial@gmail.com" aria-label="Email" class="hover:text-acid-green">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="16" x="2" y="4" rx="3" stroke="currentColor"/>
+                            <path d="M3 6l9 7 9-7" stroke="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hamburger only on mobile (fora do nav!) -->
+        <button id="mobile-menu-button" class="fixed top-6 right-6 md:hidden text-acid-green z-[1000]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden fixed inset-0 z-[999] flex-col items-center justify-center space-y-4 md:hidden px-2
+            bg-black/90 backdrop-blur-sm
+            opacity-0 pointer-events-none transition-all duration-500 transform scale-95" style="font-family: histeriss;">
+            <a href="index.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">HOME</a>
+            <a href="discography.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">DISCOGRAPHY</a>
+            <a href="gallery.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">GALLERY</a>
+            <a href="about.html"
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-acid-green hover:text-acid-blue transition-colors font-normal m-0">ABOUT</a>
+            <!-- Social links abaixo das opções -->
+            <div class="flex items-center justify-center space-x-6 mt-8">
+                <a href="https://www.instagram.com/acidemiaoficial/" target="_blank" aria-label="Instagram" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect width="18" height="18" x="3" y="3" rx="5" stroke="currentColor"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor"/>
+                        <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@acidemia2392" target="_blank" aria-label="YouTube" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.8 8.001a2.75 2.75 0 0 0-1.93-1.94C18.2 6 12 6 12 6s-6.2 0-7.87.06A2.75 2.75 0 0 0 2.2 8.001 28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.93 1.94C5.8 18 12 18 12 18s6.2 0 7.87-.06a2.75 2.75 0 0 0 1.93-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l6 3-6 3z"/>
+                    </svg>
+                </a>
+                <a href="https://acidemiaoficial.bandcamp.com/" target="_blank" aria-label="Bandcamp" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 32 32">
+                            <polygon points="2,28 30,28 12,4 2,4" />
+                        </svg>
+                </a>
+                <a href="mailto:acidemiaoficial@gmail.com" aria-label="Email" class="hover:text-acid-green">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect width="20" height="16" x="2" y="4" rx="3" stroke="currentColor"/>
+                        <path d="M3 6l9 7 9-7" stroke="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-acid-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Header Mobile (apenas mobile) -->
+        <div id="mobile-header" class="flex items-center justify-between px-4 py-5 fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md md:hidden transition-transform duration-500">
+            <img src="images/logo.png" alt="Logo ACIDEMIA" class="h-14 w-auto" />
+        </div>
+
+        <!-- Espaço para o header fixo -->
+        <div class="h-24"></div>
+
+        <!-- Discography Section -->
+        <section id="discography" class="max-w-5xl mx-auto py-16 px-4">
+            <h2 class="text-4xl md:text-3xl font-bold text-acid-green mb-10 text-center" style="font-family: histeriss;">
+                DISCOGRAPHY
+            </h2>
+            <h3 class="text-2xl md:text-5xl font-bold text-acid-blue mb-6 mt-4 text-center" style="font-family: histeriss;">
+                ALBUMS
+            </h3>
+            <div id="albums-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-12">
+                <!-- Os álbuns serão inseridos aqui via JS -->
+            </div>
+            <h3 class="text-2xl md:text-5xl font-bold text-acid-blue mb-6 mt-8 text-center" style="font-family: histeriss;">
+                EP's
+            </h3>
+            <div id="eps-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                <!-- Os EPs serão inseridos aqui via JS -->
+            </div>
+        </section>
+
+        <!-- Modal de Álbum -->
+        <div id="album-modal" class="fixed inset-0 bg-black/80 z-[3000] flex items-center justify-center hidden">
+            <div class="bg-[#181818] rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+                <button id="close-modal" class="absolute top-3 right-3 text-acid-green hover:text-acid-blue text-3xl font-bold">&times;</button>
+                <div id="modal-album-art" class="mb-4 flex justify-center"></div>
+                <div class="flex items-center justify-center mb-2 gap-2">
+                    <h3 id="modal-album-title" class="text-2xl font-bold text-acid-green text-center"></h3>
+                    <button id="about-album-btn" class="ml-2 px-3 py-1 bg-acid-purple text-white rounded hover:bg-acid-blue transition-colors text-xs font-bold">Sobre</button>
+                </div>
+                <p id="modal-album-year" class="text-center text-gray-400 mb-4"></p>
+                <ul id="modal-tracklist" class="space-y-3">
+                    <!-- Músicas serão inseridas aqui -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modal Sobre o Álbum -->
+        <div id="about-modal" class="fixed inset-0 bg-black/90 z-[4001] flex items-center justify-center hidden px-2">
+            <div id="about-modal-box"
+                class="bg-[#181818] rounded-lg shadow-lg relative flex flex-col items-center p-6 max-w-md w-full">
+                <button id="close-about-modal" class="absolute top-3 right-3 text-acid-green hover:text-acid-blue text-3xl font-bold">&times;</button>
+                <h4 id="about-title" class="text-xl font-bold text-acid-purple mb-4 text-center break-words w-full"></h4>
+                <div id="about-content" class="text-gray-200 text-base leading-relaxed font-mono text-center whitespace-pre-line"></div>
+            </div>
+        </div>
+
+        <!-- Modal de Letras -->
+        <div id="lyrics-modal" class="fixed inset-0 bg-black/90 z-[4000] flex items-center justify-center hidden px-2">
+            <div id="lyrics-modal-box"
+                class="bg-[#181818] rounded-lg shadow-lg relative flex flex-col items-center"
+                style="padding: 1.5rem; min-width: 220px; max-width: 98vw; width: 420px; max-height: 80vh; box-sizing: border-box;">
+                <button id="close-lyrics-modal" class="absolute top-3 right-3 text-acid-green hover:text-acid-blue text-3xl font-bold">&times;</button>
+                <h4 id="lyrics-title" class="text-lg md:text-xl font-bold text-acid-green mb-4 text-center break-words w-full"></h4>
+                <pre id="lyrics-content"
+                    class="whitespace-pre-wrap text-gray-200 text-xs md:text-base leading-relaxed font-mono break-words text-center"
+                    style="margin: 0 auto; display: block; padding: 0; background: none; border: none; max-height: 60vh; overflow-y: auto; width: 100%;"></pre>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="py-6 px-4 md:px-8 border-t border-gray-800">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 ACIDEMIA. ALL RIGHTS RESERVED.</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/acidemiaoficial/" class="text-gray-400 hover:text-acid-green transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@acidemia2392" class="text-gray-400 hover:text-acid-green transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Portal Effect -->
+    <div id="portal" class="fixed inset-0 bg-black z-40 pointer-events-none opacity-0"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/logo3d.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+const albums = [
+    {
+        title: "Podridão",
+        year: 2021,
+        art: "images/Podridão.jpg",
+        about: `O álbum "Podridão" explora temas de decadência, desespero e renascimento, trazendo letras densas e atmosferas pesadas que representam a essência do doom e stoner nacional.
+Lançado em 15 de junho de 2021, o álbum foi gravado e produzido por Fatboo Studios, com masterização e mixagem de Steffan Duarte. A arte da capa foi criada por Doomed_6b.`,
+        tracks: [
+            { title: "Névoas de Ácido", lyrics: 
+            `
+Quem dirá o que é certo?
+Extinto agindo ao desespero
+Se alimentando da dor
+Aniquilando seu próprio medo
+
+O desespero mascarado
+O mesmo sangue correndo nas veias
+A face em carne viva
+A verdade em um reflexo
+
+Existência, magia negra
+Ilusão, desespero
+7 velas acesas
+Ritual e escuridão
+
+A mente perturbada, mandando agir.
+Sem sentimento, profunda imensidão.
+A mente perturbada, mandando agir.
+Sem sentimento, profunda imensidão.
+
+O anoitecer está próximo,
+Névoas próxima a superfície.
+Gritos de horror e desespero,
+Será a ordem para as próximas mortes?
+(x2)
+
+Ácido corroendo pela pele,
+Cada gota um sofrimento, eterno momento.
+Só vive uma vez, não é mesmo?
+(x2)
+            `
+            },
+            { title: "Mórbido", lyrics: 
+            `
+Ao calar da noite.
+
+Seu ego e seu rosto podre cai
+
+Mórbido e fleumático.
+
+A qualquer lugar onde vai.
+            `
+            },
+            { title: "Existência", lyrics: 
+            `
+Seres e seus desejos inalcançáveis
+moldados para manipular
+Despedaçando momentos incalculáveis
+prestes a sufocar
+
+A morte não procura por(sua) existência
+apenas a angústia irá te sufocar
+Aos poucos suas mentiras deixarão de existir
+a manipulação levará à morte
+
+Escravo da tentação
+degustando o veneno
+ciclo repentino
+coração negro
+
+Levando a destruição interna
+o gosto da perversão já dominou
+(x8)
+            `
+            },
+            { title: "Angústia", lyrics: 
+            `
+Sob mentes perdidas ou mentes distantes
+pensamentos complicados, trancafiados ao destino
+sem escolha, o tempo passa, e ao menos, sobra a reflexão
+O desejo pelo mais fácil? ou será apenas o que resta?
+
+O pensamento se torna uma prisão
+Vai e vem a cada segundo
+Torna-se rotineiro. Por onde se deve escapar? 
+Se a própria saída é o começo de tudo?
+Movido pelo ódio? Inicio a destruição?
+A procura da escuridão eterna.
+
+Tortura mental.
+Decomposição sentimental.
+(x2)
+
+O lado obscuro do universo,
+Não conspira a favor.
+A mente será o centro para o caos.
+Vida obscura buscando pelo fim. 
+(refrão)
+
+Angústia e ansiedade,
+A vida desnecessária,
+Amarga,
+Prisão eterna!
+
+Olhando para o céu estrelado,
+Alguém está observando?
+Olhando para o sol, tudo está queimando? 
+(x2)
+
+Angústia e ansiedade,
+A vida desnecessária,
+Amarga,
+Prisão eterna!
+(x2)
+            `
+            },
+            { title: "Podridão", lyrics: 
+            `
+Vidas arrastadas pelo desespero
+Aguardando a hora de queimar
+Crateras para o início da desgraça
+Por que temer o fim?
+
+Podridão ao amanhecer
+Pensamentos em vão
+Escuridão e sombras
+Escondidas a sete chaves (x2)
+
+Crenças para o mal
+O ritual começou
+Apenas as verdades subliminares
+Expostas de maneira errada
+
+Podridão ao amanhecer
+Pensamentos em vão
+Escuridão e sombras
+Escondidas a sete chaves (x2)
+            `
+            },
+            { title: "Arcturianos", lyrics: 
+            `
+            `
+            },
+            { title: "Caximbo", lyrics: 
+            `
+            `
+            },
+        ]
+    },
+    {
+        title: "Mórbido",
+        year: 2022,
+        about: `
+Ao cair da noite, rastejando, mórbidos e fleumáticos, perdidos no pântano após a podridão, renascemos, ainda mórbidos, mas em contemplação com o universo e um resquício de esperança.
+
+Em Mórbido, a humanidade está na ociosidade da existência, perdida em si mesma, não sabe mais diferenciar a realidade da tecnologia. Mesmo em seus corpos cibernéticos rastejando lentamente em Marte, no fundo da consciência ainda existe aquele sentimento de esperança e de que sua espécie reinará.
+
+lançado em 24 de março de 2022
+Rec - @orusga
+Mix e Master - @steffanduarte
+Arte por - @putrefaccion_cadaverica
+Rec at - Doomcave`,
+        art: "images/Mórbido.jpg",
+        tracks: [
+            { title: "Energia escura", lyrics: 
+            `
+De repente eu acordo.
+Vagando pelo espaço.
+Da minha mente 
+Destruída por anseios.
+
+Meus olhos refletem.
+Tudo esta reluzente.
+levitando sem direção.
+Na imensa escuridão 
+
+¿"eu sou a existência,
+eu sou a destruição." ¿
+__________ 
+
+Observe as estrelas e veja-se vagando com elas.
+
+Sem transmitir luz.
+
+Criando sua própria escuridão.
+            ` 
+            },
+            { title: "Expansão", lyrics: 
+            `
+Eu não sou a noite,
+Eu não sou o dia.
+Sou meu próprio inimigo.
+Em forma de vida.
+
+Ser assim como estrelas no céu.
+Em colapso  
+Mortos mas aparentes.
+Fluindo no cosmos 
+
+Despedaçando a morte 
+renascendo 
+Água ou sangue.
+A natureza humana opaca a luz 
+______
+
+A criação.
+Tortura.
+Solidão.
+Castiga 
+Energia 
+Escura  
+Explosão
+Ordena.
+Expansão
+Devora.
+A criação.
+Tortura.
+            ` 
+            },
+            { title: "Lentamente", lyrics: 
+            `
+
+            ` 
+            },
+            { title: "Consciência", lyrics: 
+            `
+Mentiras,
+Manipuladas por anseios.
+Verdades,
+Espelhadas no desespero.
+
+Sofrimento,
+Tendo um fim.
+Angústia,
+Virando esperança
+
+De olhos abertos.
+No fim de tudo.
+A força será a crença.
+Movida pela lentidão.
+La dentro, 
+A raiva cresce.
+Das escritas,
+FEITAS DE PÓ
+            ` 
+            },
+        ]
+    }
+];
+
+const eps = [
+    {
+        title: "Extinction (EP)",
+        year: 2018,
+        art: "images/extinction.jpg",
+        tracks: [
+            { title: "Lost In The Swamp", lyrics: 
+            `
+The trees punished in the wind
+Beating each other, black and ominous
+A strong wind reigning over the earth.
+
+The earth itself was a desolation
+Without life, without movement,
+So solitary and cold that spirit
+Was not even of that sadness.
+
+Black shadow reigning on your side
+The energies being depleted by the earth
+The hum of the swamp seemed to be laughing
+Of the futile of life
+And the futile effort to live
+
+Your way will be under the earth
+Lost in the swamp
+Your way will be under the earth
+Lost in the swamp
+Your way will be under the earth
+Lost in the swamp
+            `
+            },
+            { title: "Slow Children", lyrics:
+            `
+Children rise from the grave
+Slowly ordered to the end
+Wishing death one by one
+Will have no salvation
+
+It's only a matter of time
+Will end a suffering
+The eyes of mysery
+Get ready to die
+
+Waking up in disapair
+Living with fear
+Here is the second world
+The third world is after dead
+
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave`   
+            },
+            { title: "Under The Corpse", lyrics:
+            `
+DECAYING CORPSES
+UNDER THE GROUND
+THERE ARE NO RULES
+THE SMELL IS THE PLEASURE
+
+DEATH IS NO LONGER A SURPRISE (X4)
+
+UNDER THE CORPSE
+POWDERED BONES
+LARVAE DOMINATE
+THE GRAVEYARD IS HABITABLE `
+            },
+            { title: "Black Cloud", lyrics: 
+            `
+LIVING WITHIN YOUR WORLD,
+DISTORTING THE TRUTHS,
+SHOWING ONLY YOUR OPINION,
+MANIPULATING THE LIES
+
+HIDING REALITY,
+SPEAKING THAT IT’S SALVATION,
+EXTERMINATING THE DIFERENCES
+RETHINKING EVOLUTION.
+
+LOST HEADS,
+GOING BY HIS WORDS,
+THINKING THAT THIS IS THE WAY,
+ROTTEN BY SLAVERY,
+
+WEAK CRAWLING TO THE GROUND,
+NO STRENGH TO LOOK BEHIND.
+BLACK CLOUD UNDER YOUR WORLD,
+ALL THIS FOR NOTHING?
+
+NO GOD, NO MASTERS, NO LIES, IN YOUR EYES
+
+YOUR DAY IS ENDING, AND WHAT TO DO?
+ALREADY DEAD INSIDE, LET IT ROT.
+HIS FLESH WAS TORN AND BURNED,
+WITHOUT SOMETHING TO SAY, OH YEAAAH
+
+BLACK CLOUD UNDER YOUR WORLD, 
+ALL THIS FOR NOTHING?
+            `
+            },
+            { title: "Life Rise At Sunrise", lyrics: 
+            `
+LIFE RISES AT SUNRISE
+THE LIGHTS A WAY FOR THE EVENING
+TRAVELING THROUGH CONSCIOUSNESS
+THE DOOR TO FREEDOM IN THE SOUND OF THE COSMOS
+
+THE JOURNEY INTO THE SUN AROUND THE DARKNESS
+LIFE UNDER NATURE SPACE
+ENERGIES FLOW AROUND THE RINGS
+SYSTEMATIC MOVIMENTS
+
+ENERGIES CONCENTRATED ON AN ALTAR
+FEEDING MAGNETIC FORCES
+MAGMAS COOLED TO THE MELTING POINT
+THICK SOUND PRESSURE
+
+FLUIDS, ACIDS, LIQUIFATION
+WATER UNDER THE EARTH
+MOVED BY MOTHER LIGHT
+DENSE DARKNESS
+
+BEGINNING THE RETURN OF THE SUN,
+THE CINEREA LIGHT THAT SHOWS HOPE
+THE DARKSIDE CHANGING DIRECTIONS
+DRIVEN BY AN ENERGETIC COSMIC
+
+EVAPORATION WATER UNDER THE FLOOR
+THE LIQUID WILL RETURN TO THE NATURAL STATE
+RENEWAL CHANCES
+NATURAL FORCES
+
+SECONDS OF BOILING LEADING TO DARKNESS
+MOVED BY A NATURAL FORCE
+A CYCLE OF BEGINNING, MIDDLE AND END
+DEATH IS THE REAL LIFE 
+DEATH IS THE REAL LIFE`
+        },
+            { title: "Extinction", lyrics: 
+            `
+THOUSANDS YEARS OF CIVILIZATION, HAVE PASSED
+THE EXISTENCE OF THE WILD WORLD, STILL FASCINATED US
+
+THERE ARE THIRTY-SIX THOUSAND YEARS
+ON THE WALLS OF THE CAVES THE MAN PAINTED WILD LIFE, WITH FEAR, UNDER THE NATURE
+
+WE TOLERATE, THE EXISTENCE OF NATURE
+THIRST, HUNGER AND FEAR, SOON WE’LL NO LONGER HAVE THIS UNIVERSE
+IN WHICH WE LIVE 
+IN WHICH WE LIVE
+
+WE REPLACE OURSELVES WITH THE DOMESTIC WORLD THAT FEED, SEAVES.
+A USEFUL WORLD FOR MEN
+
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+
+FOUR BILLION YEARS OF EVOLUTION
+HAD FORGET, LIFE ON EARTH
+PROGRESS, EXHAUSTION, CLIMATE,
+AND IN JUST FEEL HUNDRED YEARS, THE MAN DESTROYED EVERYTHING
+            `},
+        ]   
+    },
+    {
+        title: "Live in Swamp (EP)",
+        year: 2020,
+        art: "images/Live in Swamp.jpg",
+        tracks: [
+            { title: "𝔖𝔩𝔬𝔴 ℭ𝔥𝔦𝔩𝔡𝔯𝔢𝔫", lyrics: 
+            `
+Children rise from the grave
+Slowly ordered to the end
+Wishing death one by one
+Will have no salvation
+
+It's only a matter of time
+Will end a suffering
+The eyes of mysery
+Get ready to die
+
+Waking up in disapair
+Living with fear
+Here is the second world
+The third world is after dead
+
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+Children rise from the grave
+`
+            },
+            { title: "𝔏𝔬𝔰𝔱 𝔦𝔫 𝔱𝔥𝔢 𝔖𝔴𝔞𝔪𝔭", lyrics: 
+            `
+The trees punished in the wind
+Beating each other, black and ominous
+A strong wind reigning over the earth.
+
+The earth itself was a desolation
+Without life, without movement,
+So solitary and cold that spirit
+Was not even of that sadness.
+
+Black shadow reigning on your side
+The energies being depleted by the earth
+The hum of the swamp seemed to be laughing
+Of the futile of life
+And the futile effort to live
+
+Your way will be under the earth
+Lost in the swamp
+Your way will be under the earth
+Lost in the swamp
+Your way will be under the earth
+Lost in the swamp
+            `
+            },
+            { title: "𝔅𝔩𝔞𝔠𝔨 ℭ𝔩𝔬𝔲𝔡", lyrics: 
+            `
+LIVING WITHIN YOUR WORLD,
+DISTORTING THE TRUTHS,
+SHOWING ONLY YOUR OPINION,
+MANIPULATING THE LIES
+
+HIDING REALITY,
+SPEAKING THAT IT’S SALVATION,
+EXTERMINATING THE DIFERENCES
+RETHINKING EVOLUTION.
+
+LOST HEADS,
+GOING BY HIS WORDS,
+THINKING THAT THIS IS THE WAY,
+ROTTEN BY SLAVERY,
+
+WEAK CRAWLING TO THE GROUND,
+NO STRENGH TO LOOK BEHIND.
+BLACK CLOUD UNDER YOUR WORLD,
+ALL THIS FOR NOTHING?
+
+NO GOD, NO MASTERS, NO LIES, IN YOUR EYES
+
+YOUR DAY IS ENDING, AND WHAT TO DO?
+ALREADY DEAD INSIDE, LET IT ROT.
+HIS FLESH WAS TORN AND BURNED,
+WITHOUT SOMETHING TO SAY, OH YEAAAH
+
+
+BLACK CLOUD UNDER YOUR WORLD, 
+ALL THIS FOR NOTHING?
+            `
+            },
+            { title: "𝔄𝔫𝔡𝔢𝔯 𝔱𝔥𝔢 ℭ𝔬𝔯𝔭𝔰𝔢", lyrics: 
+            `
+DECAYING CORPSES
+UNDER THE GROUND
+THERE ARE NO RULES
+THE SMELL IS THE PLEASURE
+
+DEATH IS NO LONGER A SURPRISE (X4)
+
+UNDER THE CORPSE
+POWDERED BONES
+LARVAE DOMINATE
+THE GRAVEYARD IS HABITABLE
+            `
+            },
+            { title: "𝔈𝔶𝔱𝔦𝔫𝔠𝔱𝔦𝔬𝔫", lyrics: 
+            `
+THOUSANDS YEARS OF CIVILIZATION, HAVE PASSED
+THE EXISTENCE OF THE WILD WORLD, STILL FASCINATED US
+
+THERE ARE THIRTY-SIX THOUSAND YEARS
+ON THE WALLS OF THE CAVES THE MAN PAINTED WILD LIFE, WITH FEAR, UNDER THE NATURE
+
+WE TOLERATE, THE EXISTENCE OF NATURE
+THIRST, HUNGER AND FEAR, SOON WE’LL NO LONGER HAVE THIS UNIVERSE
+IN WHICH WE LIVE 
+IN WHICH WE LIVE
+
+WE REPLACE OURSELVES WITH THE DOMESTIC WORLD THAT FEED, SEAVES.
+A USEFUL WORLD FOR MEN
+
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+PROGRESS, EXHAUSTION, CLIMATE, MODIFICATION
+
+FOUR BILLION YEARS OF EVOLUTION
+HAD FORGET, LIFE ON EARTH
+PROGRESS, EXHAUSTION, CLIMATE,
+AND IN JUST FEEL HUNDRED YEARS, THE MAN DESTROYED EVERYTHING
+            `
+            },
+            { title: "𝔭𝔬𝔡𝔯𝔦𝔡𝔞𝔬", lyrics: 
+            `
+Vidas arrastadas pelo desespero
+Aguardando a hora de queimar.
+Crateras para o início da desgraça,
+Por que temer o fim?
+
+Podridão ao amanhecer,
+Pensamentos em vão.
+Escuridão e sombras,
+Escondida a sete chaves ( x2)
+
+Crenças para o mal,
+O ritual começou.
+Apenas as verdades subliminares,
+Expostas de maneira errada.
+
+Podridão ao amanhecer,
+Pensamentos em vão.
+Escuridão e sombras,
+Escondida a sete chaves ( x2)
+            `
+            },
+        ]
+    },
+    {
+        title: "Névoas de Ácido (EP)",
+        year: 2021,
+        art: "images/Nevoasdeacido.jpg",
+        tracks: [
+            { title: "Névoas de Ácido ", lyrics: 
+            `
+Quem dirá o que é certo,
+Extinto agindo ao desespero.
+Se alimentando da dor,
+Aniquilando seu próprio medo.
+
+O desespero mascarado,
+O mesmo sangue correndo nas veias.
+A face em carne viva,
+A verdade em um reflexo.
+
+Existência, magia negra.
+Ilusão, desespero.
+7 velas acesas.
+Ritual e escuridão.
+
+A mente perturbada, mandando agir.
+Sem sentimento, profunda imensidão.
+A mente perturbada, mandando agir.
+Sem sentimento, profunda imensidão.
+
+O anoitecer está próximo,
+Névoas próxima a superfície.
+Gritos de horror e desespero,
+Será a ordem para as próximas mortes?
+(x2)
+
+Ácido corroendo pela pele,
+Cada gota um sofrimento, eterno momento.
+Só vive uma vez, não é mesmo?
+(x2)
+
+
+#####créditos#####
+lançado em 15 de junho de 2021
+Record - Fatboo Studios
+Master and mix - Steffan Duarte
+Art work - Doomed_6b
+            `
+            },
+        ]
+    },
+    {
+        title: "Acid Jams (EP)",
+        year: 2021,
+        art: "images/Acid Jams.jpg",
+        tracks: [
+            { title: "Viagem", lyrics: ""
+            },
+            { title: "Riff infinito", lyrics: ""
+            },
+        ]
+    },              
+    // Adicione mais EPs conforme necessário
+];
+
+// Renderiza os álbuns
+function renderAlbums() {
+    const albumsList = document.getElementById('albums-list');
+    albumsList.innerHTML = '';
+    albums
+        .sort((a, b) => a.year - b.year)
+        .forEach((album, idx) => {
+            const albumDiv = document.createElement('div');
+            albumDiv.className = "cursor-pointer group";
+            albumDiv.innerHTML = `
+                <div class="rounded-lg overflow-hidden shadow-lg border-2 border-acid-blue group-hover:border-acid-green transition-all duration-300">
+                    <img src="${album.art}" alt="${album.title}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 class="mt-4 text-2xl font-bold text-acid-blue text-center">${album.title}</h3>
+                <p class="text-center text-white-400">${album.year}</p>
+            `;
+            albumDiv.onclick = () => openAlbumModal(albums, idx);
+            albumsList.appendChild(albumDiv);
+        });
+}
+
+// Renderiza os EPs
+function renderEPs() {
+    const epsList = document.getElementById('eps-list');
+    epsList.innerHTML = '';
+    eps
+        .sort((a, b) => a.year - b.year)
+        .forEach((ep, idx) => {
+            const epDiv = document.createElement('div');
+            epDiv.className = "cursor-pointer group";
+            epDiv.innerHTML = `
+                <div class="rounded-lg overflow-hidden shadow-lg border-2 border-acid-blue group-hover:border-acid-green transition-all duration-300">
+                    <img src="${ep.art}" alt="${ep.title}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 class="mt-4 text-2xl font-bold text-acid-blue text-center">${ep.title}</h3>
+                <p class="text-center text-white-400">${ep.year}</p>
+            `;
+            epDiv.onclick = () => openAlbumModal(eps, idx);
+            epsList.appendChild(epDiv);
+        });
+}
+
+// Modal de álbum/EP
+function openAlbumModal(collection, idx) {
+    const album = collection[idx];
+    document.getElementById('modal-album-art').innerHTML = `<img src="${album.art}" alt="${album.title}" class="w-48 h-48 object-cover rounded-lg mx-auto" />`;
+    document.getElementById('modal-album-title').textContent = album.title;
+    document.getElementById('modal-album-year').textContent = album.year;
+    const tracklist = document.getElementById('modal-tracklist');
+    tracklist.innerHTML = '';
+    album.tracks.forEach((track, tIdx) => {
+        const li = document.createElement('li');
+        li.className = "flex items-center justify-between bg-[#232323] rounded px-3 py-2";
+        li.innerHTML = `
+            <span class="text-lg">${track.title}</span>
+            <button class="ml-4 px-3 py-1 bg-acid-green text-black rounded hover:bg-acid-blue transition-colors text-sm font-bold lyrics-btn" data-collection="${collection === albums ? 'albums' : 'eps'}" data-album="${idx}" data-track="${tIdx}">Lyrics</button>
+        `;
+        tracklist.appendChild(li);
+    });
+    // Salva o "about" e o título do álbum atual
+    currentAlbumAbout = album.about || "";
+    currentAlbumTitle = album.title;
+    // Mostra ou esconde o botão "Sobre"
+    const aboutBtn = document.getElementById('about-album-btn');
+    if (aboutBtn) {
+        if (currentAlbumAbout.trim() === "") {
+            aboutBtn.style.display = "none";
+        } else {
+            aboutBtn.style.display = "inline-block";
+        }
+    }
+    document.getElementById('album-modal').classList.remove('hidden');
+}
+
+// Fecha modal de álbum
+document.getElementById('close-modal').onclick = () => {
+    document.getElementById('album-modal').classList.add('hidden');
+};
+
+// Lyrics modal
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('lyrics-btn')) {
+        const collectionName = e.target.getAttribute('data-collection');
+        const albumIdx = e.target.getAttribute('data-album');
+        const trackIdx = e.target.getAttribute('data-track');
+        const collection = collectionName === 'albums' ? albums : eps;
+        const track = collection[albumIdx].tracks[trackIdx];
+        document.getElementById('lyrics-title').textContent = track.title;
+        document.getElementById('lyrics-content').textContent = track.lyrics.trim();
+
+        // Não precisa mais de ajuste dinâmico de tamanho
+        document.getElementById('lyrics-modal').classList.remove('hidden');
+    }
+});
+
+// Fecha modal de letras
+document.getElementById('close-lyrics-modal').onclick = () => {
+    document.getElementById('lyrics-modal').classList.add('hidden');
+};
+
+// Botão "Sobre" do álbum
+document.getElementById('about-album-btn').onclick = function() {
+    document.getElementById('about-title').textContent = currentAlbumTitle;
+    document.getElementById('about-content').textContent = currentAlbumAbout;
+    document.getElementById('about-modal').classList.remove('hidden');
+};
+
+// Fecha modal "Sobre"
+document.getElementById('close-about-modal').onclick = function() {
+    document.getElementById('about-modal').classList.add('hidden');
+};
+
+// Fecha modal ao clicar fora
+document.getElementById('about-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.add('hidden');
+});
+
+// Fecha modais ao clicar fora
+['album-modal', 'lyrics-modal'].forEach(id => {
+    document.getElementById(id).addEventListener('click', function(e) {
+        if (e.target === this) this.classList.add('hidden');
+    });
+});
+
+let currentAlbumAbout = "";
+let currentAlbumTitle = "";
+
+// Inicializa
+renderAlbums();
+renderEPs();
+</script>
+</body>
+
+</html>
