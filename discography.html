@@ -263,7 +263,13 @@
     </style>
 </head>
 
-<body class="bg-[url('images/01.jpg')] bg-cover bg-center bg-no-repeat text-white">
+<body class="bg-black bg-cover bg-center bg-no-repeat text-white">
+    <div id="three-bg" style="position:fixed; inset:0; z-index:0; pointer-events:none;"></div>
+    <video id="video-kinect" loop muted playsinline style="display:none">
+        <source src="textures/kinect.webm" type="video/webm">
+        <source src="textures/kinect.mp4" type="video/mp4">
+    </video>
+
     <!-- Loading Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
         <div class="w-32 h-32 border-4 border-acid-green rounded-full animate-spin-slow border-t-transparent mb-4">
@@ -280,7 +286,7 @@
     <div id="content" class="min-h-screen flex flex-col opacity-0">
         <!-- Navigation -->
         <!-- Navigation Desktop -->
-        <nav id="main-nav" class="py-5 px-4 md:px-10 items-center fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md transition-all duration-500 opacity-100 hidden md:flex">
+        <nav id="main-nav" class="py-5 px-4 md:px-10 items-center fixed top-0 left-0 w-full z-50 bg-white/5 backdrop-blur-md transition-all duration-500 opacity-100 hidden md:flex">
             <div class="flex items-center space-x-8 w-full" style="font-family: histeriss;">
                 <img src="images/logo.png" alt="Logo ACIDEMIA" class="h-20 md:h-30 w-auto" />
                 <div class="md:flex space-x-20 flex-1" style="font-family: histeriss;">
@@ -381,16 +387,16 @@
 
         <!-- Discography Section -->
         <section id="discography" class="max-w-5xl mx-auto py-16 px-4">
-            <h2 class="text-4xl md:text-3xl font-bold text-acid-green mb-10 text-center" style="font-family: histeriss;">
+            <h2 class="text-4xl md:text-3xl border-2 font-bold text-acid-green mb-10 text-center" style="font-family: histeriss;">
                 DISCOGRAPHY
             </h2>
-            <h3 class="text-2xl md:text-5xl font-bold text-acid-blue mb-6 mt-4 text-center" style="font-family: histeriss;">
+            <h3 class="text-5xl md:text-5xl  border-b-2 p-3 font-bold text-acid-blue mb-6 mt-4 text-center" style="font-family: histeriss;">
                 ALBUMS
             </h3>
             <div id="albums-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-12">
                 <!-- Os álbuns serão inseridos aqui via JS -->
             </div>
-            <h3 class="text-2xl md:text-5xl font-bold text-acid-blue mb-6 mt-8 text-center" style="font-family: histeriss;">
+            <h3 class="text-5xl md:text-5xl border-b-2 p-3 font-bold text-acid-blue mb-6 mt-8 text-center" style="font-family: histeriss;">
                 EP's
             </h3>
             <div id="eps-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -399,8 +405,8 @@
         </section>
 
         <!-- Modal de Álbum -->
-        <div id="album-modal" class="fixed inset-0 bg-black/80 z-[3000] flex items-center justify-center hidden">
-            <div class="bg-[#181818] rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+        <div id="album-modal" class="fixed inset-0 bg-black/80 z-[3000] flex items-center justify-center hidden transition-opacity duration-300">
+            <div id="album-modal-box" class="bg-[#181818] rounded-lg shadow-lg max-w-lg w-full p-6 relative transform scale-95 opacity-0 transition-all duration-300">
                 <button id="close-modal" class="absolute top-3 right-3 text-acid-green hover:text-acid-blue text-3xl font-bold">&times;</button>
                 <div id="modal-album-art" class="mb-4 flex justify-center"></div>
                 <div class="flex items-center justify-center mb-2 gap-2">
@@ -464,6 +470,132 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+(function() {
+    const container = document.getElementById('three-bg');
+    container.innerHTML = '';
+
+    let scene, camera, renderer, geometry, mesh, material;
+    let mouse = { x: 0, y: 0 }, center = new THREE.Vector3(0, 0, -1000);
+
+    // Video
+    const video = document.getElementById('video-kinect');
+    const texture = new THREE.VideoTexture(video);
+    texture.minFilter = THREE.NearestFilter;
+    texture.generateMipmaps = false;
+
+    const width = 640, height = 480;
+    const nearClipping = 850, farClipping = 4000;
+
+    // Geometry
+    geometry = new THREE.BufferGeometry();
+    const vertices = new Float32Array(width * height * 3);
+    for (let i = 0, j = 0, l = vertices.length; i < l; i += 3, j++) {
+        vertices[i] = j % width;
+        vertices[i + 1] = Math.floor(j / width);
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+
+    // Shaders
+    const vertexShader = `
+        uniform sampler2D map;
+        uniform float width;
+        uniform float height;
+        uniform float nearClipping, farClipping;
+        uniform float pointSize;
+        uniform float zOffset;
+        varying vec2 vUv;
+        const float XtoZ = 1.11146;
+        const float YtoZ = 0.83359;
+        void main() {
+            vUv = vec2( position.x / width, position.y / height );
+            vec4 color = texture2D( map, vUv );
+            float depth = ( color.r + color.g + color.b ) / 3.0;
+            float z = ( 1.0 - depth ) * (farClipping - nearClipping) + nearClipping;
+            vec4 pos = vec4(
+                ( position.x / width - 0.5 ) * z * XtoZ,
+                ( position.y / height - 0.5 ) * z * YtoZ,
+                - z + zOffset,
+                1.0);
+            gl_PointSize = pointSize;
+            gl_Position = projectionMatrix * modelViewMatrix * pos;
+        }
+    `;
+    const fragmentShader = `
+        uniform sampler2D map;
+        varying vec2 vUv;
+        void main() {
+            vec4 color = texture2D( map, vUv );
+            gl_FragColor = vec4( color.r, color.g, color.b, 0.2 );
+        }
+    `;
+
+    // Material
+    material = new THREE.ShaderMaterial({
+        uniforms: {
+            'map': { value: texture },
+            'width': { value: width },
+            'height': { value: height },
+            'nearClipping': { value: nearClipping },
+            'farClipping': { value: farClipping },
+            'pointSize': { value: 2 },
+            'zOffset': { value: 1000 }
+        },
+        vertexShader,
+        fragmentShader,
+        blending: THREE.AdditiveBlending,
+        depthTest: false, depthWrite: false,
+        transparent: true
+    });
+
+    // Mesh
+    mesh = new THREE.Points(geometry, material);
+
+    // Scene & Camera
+    scene = new THREE.Scene();
+    scene.add(mesh);
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(0, 0, 500);
+
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = 0;
+    renderer.domElement.style.left = 0;
+    renderer.domElement.style.width = '100vw';
+    renderer.domElement.style.height = '100vh';
+    container.appendChild(renderer.domElement);
+
+    // Responsivo
+    window.addEventListener('resize', onWindowResize);
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    // Mouse
+    document.addEventListener('mousemove', function(event) {
+        mouse.x = (event.clientX - window.innerWidth / 2) * 8;
+        mouse.y = (event.clientY - window.innerHeight / 2) * 8;
+    });
+
+    // Animação
+    function animate() {
+        camera.position.x += (mouse.x - camera.position.x) * 0.05;
+        camera.position.y += (-mouse.y - camera.position.y) * 0.05;
+        camera.lookAt(center);
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
+
+    video.play();
+    animate();
+})();
+</script>
     <script src="js/logo3d.js"></script>
     <script src="js/main.js"></script>
     <script>
@@ -1174,13 +1306,38 @@ function openAlbumModal(collection, idx) {
             aboutBtn.style.display = "inline-block";
         }
     }
-    document.getElementById('album-modal').classList.remove('hidden');
+    // Animação suave ao abrir
+    const modal = document.getElementById('album-modal');
+    const box = document.getElementById('album-modal-box');
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+        box.classList.remove('scale-95', 'opacity-0');
+        box.classList.add('scale-100', 'opacity-100');
+    }, 10);
 }
 
-// Fecha modal de álbum
+// Fecha modal de álbum/EP com animação suave
 document.getElementById('close-modal').onclick = () => {
-    document.getElementById('album-modal').classList.add('hidden');
+    const modal = document.getElementById('album-modal');
+    const box = document.getElementById('album-modal-box');
+    box.classList.remove('scale-100', 'opacity-100');
+    box.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300);
 };
+
+// Fecha modal ao clicar fora com animação suave
+document.getElementById('album-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        const box = document.getElementById('album-modal-box');
+        box.classList.remove('scale-100', 'opacity-100');
+        box.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+            this.classList.add('hidden');
+        }, 300);
+    }
+});
 
 // Lyrics modal
 document.addEventListener('click', function(e) {

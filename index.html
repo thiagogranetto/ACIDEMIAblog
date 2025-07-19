@@ -46,6 +46,28 @@
         }
     </script>
     <style type="text/css">
+        /* Video Background */
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .video-background video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        opacity: 1; /* Ajuste a opacidade conforme necessário */
+        transition: transform 0.3s ease-out;
+    }
         /* Custom styles */
         ::-webkit-scrollbar {
             width: 8px;
@@ -148,7 +170,15 @@
     </style>
 </head>
 
-<body class="bg-[url('images/01.jpg')] bg-cover bg-center bg-no-repeat text-white">
+<body class="text-white">
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="videos/journey-through-deep-dark-rocky-cave-with-stalacti-2023-11-27-04-50-30-utc.mov" type="video/mp4">
+            <!-- Adicione fallback de imagem caso o vídeo não carregue -->
+            <img src="images/01.jpg" alt="Fallback background" style="width: 100%; height: 100%; object-fit: cover;">
+        </video>
+    </div>
     <!-- Loading Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
         <div class="w-32 h-32 border-4 border-acid-green rounded-full animate-spin-slow border-t-transparent mb-4">
